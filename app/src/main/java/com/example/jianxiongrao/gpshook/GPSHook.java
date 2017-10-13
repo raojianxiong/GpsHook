@@ -1,18 +1,17 @@
 package com.example.jianxiongrao.gpshook;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+
 import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 /**
  * Created by Jianxiong Rao on 2017/10/13.
@@ -20,7 +19,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 public class GPSHook implements IXposedHookLoadPackage{
     private final String TAG = "Xposed";
-    private XC_LoadPackage.LoadPackageParam mLpp;
+    private LoadPackageParam mLpp;
 
     //不带参数的拦截方法
     private void hook_method(String className,ClassLoader classLoader, String methodName,
@@ -47,7 +46,7 @@ public class GPSHook implements IXposedHookLoadPackage{
     }
 
     @Override
-    public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
+    public void handleLoadPackage(LoadPackageParam loadPackageParam) throws Throwable {
         mLpp = loadPackageParam;
         hook_method("android.net.wifi.WifiManager", mLpp.classLoader, "getScanResults", new XC_MethodHook() {
             @Override
