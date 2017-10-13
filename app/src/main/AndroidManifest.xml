@@ -14,10 +14,10 @@
             android:value="true" />
         <meta-data
             android:name="xposeddescription"
-            android:value="Hook系统信息" />
+            android:value="实时上班打卡" />
         <meta-data
             android:name="xposedminversion"
-            android:value="1.0" />
+            android:value="54" />
     </application>
 
 </manifest>
