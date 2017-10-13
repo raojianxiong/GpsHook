@@ -114,9 +114,9 @@ public class GPSHook implements IXposedHookLoadPackage{
                                 if (m != null) {
                                     Object[] args = new Object[1];
                                     Location l = new Location(LocationManager.GPS_PROVIDER);
-                                    //公司地址117.101567,39.086634
-                                    double la=117.101567;
-                                    double lo=39.086634;
+                                    //公司地址,39.0805571337 , 117.0945167542
+                                    double la=39.0805571337;
+                                    double lo=117.0945167542;
                                     l.setLatitude(la);
                                     l.setLongitude(lo);
                                     args[0] = l;
